@@ -29,14 +29,12 @@ namespace DecoratorApplication
 
         //public List<float> WallAreas { get { return WallAreas; } set { WallAreas = value; } }
 
-        //I would like to use doubles but they aren't so friendly.
-        //public double paintPrice = 0;
-        //public double undercoatPrice = 0;
-
-        public float paintPrice = 0;
-        public float undercoatPrice = 0;
+        public decimal paintPrice = 0;
+        public decimal undercoatPrice = 0;
 
         public string paintType;
+
+        //These functions aren't really needed yet but hopefully they'll be more useful with a private set on the arrays.
 
         public void AddWall(float width, float height)
         {

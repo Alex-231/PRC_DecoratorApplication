@@ -34,7 +34,7 @@ namespace DecoratorApplication
         string invoiceNumber = DateTime.Now.Year + "-" + (DateTime.Now.Month / 4) + "-" + DecoratorApplication.Properties.Settings.Default.invoiceNumber.ToString("D3");
         string purchaseOrder = "000";
         string paymentDue = DateTime.Now.Date.AddMonths(1).ToString("dd/MM/yy");
-        string subTotal = (MainForm.Calculator.GetTotalArea() * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice)).ToString();
+        string subTotal = (decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice)).ToString();
 
         string totalArea = MainForm.Calculator.GetTotalArea().ToString();
         string paintType = MainForm.Calculator.paintType;
@@ -42,7 +42,7 @@ namespace DecoratorApplication
         string undercoatPrice;
         string undercoatType;  //Some support for multiple undercoats here although it would take some more work.
         string discount = "0";
-        float vatRateValue = 0.2f; //Used in calculation.
+        decimal vatRateValue = 0.2m; //Used in calculation.
         string vatRate = "20";
         string vat;
         string total;
@@ -226,7 +226,7 @@ namespace DecoratorApplication
         {
             try
             {
-                vatRateValue = float.Parse(vatRateBox.Text.Remove(vatRateBox.Text.IndexOf(")")).Remove(0, vatRateBox.Text.IndexOf("%") + 1)) / 100;
+                vatRateValue = decimal.Parse(vatRateBox.Text.Remove(vatRateBox.Text.IndexOf(")")).Remove(0, vatRateBox.Text.IndexOf("%") + 1)) / 100;
             }
             catch (FormatException)
             {
@@ -241,23 +241,23 @@ namespace DecoratorApplication
                 MessageBox.Show("Something went wrong! Please check the VAT Rate.", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             vatRate = vatRateBox.Text.Remove(vatRateBox.Text.IndexOf(")")).Remove(0, vatRateBox.Text.IndexOf("%") + 1);
-            vat = (float.Parse(subTotal) * vatRateValue).ToString(); //Don't need to try this parse since it's already been parsed from a float.
-            vatBox.Text = "£" + (float.Parse(subTotal) * vatRateValue).ToString();
-            total = ((float.Parse(subTotal) + float.Parse(vat)) - float.Parse(discount)).ToString();
+            vat = (decimal.Parse(subTotal) * vatRateValue).ToString(); //Don't need to try this parse since it's already been parsed from a float.
+            vatBox.Text = "£" + (decimal.Parse(subTotal) * vatRateValue).ToString();
+            total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString();
             totalBox.Text = "£" + total;
         }
 
         private void discountBox_ValueChanged(object sender, EventArgs e)
         {
             //This makes sure that the discount cannot be greater than the price with VAT.
-            if (((float.Parse(subTotal) + float.Parse(vat)) - decimal.ToSingle(discountBox.Value)) < 0)
+            if (((decimal.Parse(subTotal) + decimal.Parse(vat)) - discountBox.Value) < 0)
             {
-                discountBox.Value = Decimal.Parse((float.Parse(subTotal) + float.Parse(vat)).ToString());
+                discountBox.Value = decimal.Parse(subTotal) + decimal.Parse(vat);
                 return;
             }
 
             discount = discountBox.Value.ToString();
-            total = ((float.Parse(subTotal) + float.Parse(vat)) - float.Parse(discount)).ToString();
+            total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString();
             totalBox.Text = "£" + total;
         }
 

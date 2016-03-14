@@ -28,7 +28,7 @@ namespace DecoratorApplication
 
                 try
                 {
-                    MainForm.Calculator.paintPrice = float.Parse(paintPriceParse);
+                    MainForm.Calculator.paintPrice = decimal.Parse(paintPriceParse);
                 }
                 catch (FormatException)
                 {
@@ -52,7 +52,7 @@ namespace DecoratorApplication
         private void UpdateLabels()
         {
             rateLbl.Text = "£" + (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice).ToString();
-            totalLbl.Text = "£" + ( MainForm.Calculator.GetTotalArea() * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice) ).ToString();
+            totalLbl.Text = "£" + ( decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice) ).ToString();
             if (MainForm.Calculator.paintPrice > 0)
             {
                 createInvoiceBtn.Enabled = true;
@@ -73,7 +73,7 @@ namespace DecoratorApplication
 
                 try
                 {
-                    MainForm.Calculator.undercoatPrice = float.Parse(undercoatPriceParse);
+                    MainForm.Calculator.undercoatPrice = decimal.Parse(undercoatPriceParse);
                 }
                 catch (FormatException)
                 {
