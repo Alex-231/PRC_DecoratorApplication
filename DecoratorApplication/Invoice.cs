@@ -53,7 +53,7 @@ namespace DecoratorApplication
         string addressline2;
         string phoneNumber;
         string customerId;
-        string specialInstructions = "";
+        string specialInstructions = ""; //Since this input isn't required, I need to make sure it can't be null.
 
         bool writeError = false; //Definately a better way to do this.
 
@@ -104,6 +104,7 @@ namespace DecoratorApplication
             saveInvoice.FileName = "Invoice #" + invoiceNumber;
             saveInvoice.ShowDialog();
         }
+
         private void CreateInvoice() //Creates the invoice and returns true. Returns false if an error occured. There's probably a better way to do this.
         {
             //Loading the whole file here, would be ideal to change it line by line but I can't figure out a simple way to read it line by line.
@@ -138,11 +139,11 @@ namespace DecoratorApplication
             #endregion
 
             invoiceFileContents = invoiceFileEditing.ToString();
-            
             try
             {
                 File.WriteAllText(saveInvoice.FileName, invoiceFileContents);
             }
+            #region Error Handling
             catch (ArgumentException)
             {
                 MessageBox.Show("Something went wrong! Please check the invoice path.", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -178,10 +179,10 @@ namespace DecoratorApplication
                 MessageBox.Show("You do not have permission to create a file there.\nDoes the file already exist?", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 writeError = true;
             }
-
+            #endregion
         }
 
-        #region BillTo Control Updating
+        #region Data Validation
 
         private void nameBox_TextChanged(object sender, EventArgs e)
         {

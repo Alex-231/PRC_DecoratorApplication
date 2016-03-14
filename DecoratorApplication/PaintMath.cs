@@ -32,6 +32,7 @@ namespace DecoratorApplication
 
         public float PaintArea = 0;
 
+        //I would like to use doubles but they aren't so friendly.
         //public double paintPrice = 0;
         //public double undercoatPrice = 0;
 
@@ -44,10 +45,12 @@ namespace DecoratorApplication
         {
             this.WallAreas.Add(width * height);
         }
+
         public void AddOpening(float width, float height)
         {
             this.OpenAreas.Add(width * height);
         }
+
         public void RemoveWall()
         {
             try
@@ -56,6 +59,7 @@ namespace DecoratorApplication
             }
             catch { }
         }
+
         public void RemoveOpening()
         {
             try
@@ -64,6 +68,7 @@ namespace DecoratorApplication
             }
             catch { }
         }
+
         public float GetTotalArea()
         {
             return (WallAreas.Sum() - OpenAreas.Sum());

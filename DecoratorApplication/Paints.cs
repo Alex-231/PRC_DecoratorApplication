@@ -18,6 +18,7 @@ namespace DecoratorApplication
 
         private void paintBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //if the selection changes, and contains a £, parse the price.
             if (paintBox.Text.Contains("£"))
             {
                 string paintPriceParse = paintBox.Text;

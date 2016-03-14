@@ -61,6 +61,7 @@ namespace DecoratorApplication
             this.widthBox.Text = null;
             this.heightBox.Text = null;
         }
+
         private void UpdateLabels()
         {
             this.OpeningsCountLbl.Text = MainForm.Calculator.OpenAreas.Count().ToString();

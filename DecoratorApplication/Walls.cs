@@ -45,8 +45,10 @@ namespace DecoratorApplication
             }
             MainForm.Calculator.AddWall(float.Parse(widthBox.Text), float.Parse(heightBox.Text));
             UpdateLabels();
+            //Empty the boxes to prevent the user from accidentally entering an area twice.
             this.widthBox.Text = null;
             this.heightBox.Text = null;
+            //If the areas array has any contents the user can move on.
             if (MainForm.Calculator.WallAreas.Count() > 0)
             {
                 this.nextBtn.Enabled = true;
@@ -62,6 +64,7 @@ namespace DecoratorApplication
                 this.nextBtn.Enabled = false;
             }
         }
+
         private void UpdateLabels()
         {
             this.WallsCountLbl.Text = MainForm.Calculator.WallAreas.Count.ToString();
