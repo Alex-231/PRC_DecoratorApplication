@@ -13,7 +13,6 @@ namespace DecoratorApplication
             OpenAreas = new List<float>();
         }
 
-
         //Public Access
         public List<float> WallAreas;
         public List<float> OpenAreas;
@@ -29,8 +28,6 @@ namespace DecoratorApplication
         */
 
         //public List<float> WallAreas { get { return WallAreas; } set { WallAreas = value; } }
-
-        public float PaintArea = 0;
 
         //I would like to use doubles but they aren't so friendly.
         //public double paintPrice = 0;
