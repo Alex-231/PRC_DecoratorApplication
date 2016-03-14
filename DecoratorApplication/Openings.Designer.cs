@@ -67,10 +67,10 @@
             // 
             this.PaintAreaLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PaintAreaLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.PaintAreaLbl.Location = new System.Drawing.Point(68, 46);
+            this.PaintAreaLbl.Location = new System.Drawing.Point(78, 46);
             this.PaintAreaLbl.Name = "PaintAreaLbl";
             this.PaintAreaLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PaintAreaLbl.Size = new System.Drawing.Size(50, 13);
+            this.PaintAreaLbl.Size = new System.Drawing.Size(40, 13);
             this.PaintAreaLbl.TabIndex = 14;
             this.PaintAreaLbl.Text = "0";
             this.PaintAreaLbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -101,9 +101,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Paint Area:";
+            this.label1.Text = "Paint Area (m²):";
             // 
             // removeOpeningBtn
             // 
@@ -133,9 +133,9 @@
             this.widthLbl.AutoSize = true;
             this.widthLbl.Location = new System.Drawing.Point(6, 23);
             this.widthLbl.Name = "widthLbl";
-            this.widthLbl.Size = new System.Drawing.Size(35, 13);
+            this.widthLbl.Size = new System.Drawing.Size(75, 13);
             this.widthLbl.TabIndex = 6;
-            this.widthLbl.Text = "Width";
+            this.widthLbl.Text = "Width (meters)";
             // 
             // addOpeningBtn
             // 
@@ -166,9 +166,9 @@
             this.heightLbl.AutoSize = true;
             this.heightLbl.Location = new System.Drawing.Point(6, 65);
             this.heightLbl.Name = "heightLbl";
-            this.heightLbl.Size = new System.Drawing.Size(38, 13);
+            this.heightLbl.Size = new System.Drawing.Size(78, 13);
             this.heightLbl.TabIndex = 7;
-            this.heightLbl.Text = "Height";
+            this.heightLbl.Text = "Height (meters)";
             // 
             // addOpeningsLbl
             // 
