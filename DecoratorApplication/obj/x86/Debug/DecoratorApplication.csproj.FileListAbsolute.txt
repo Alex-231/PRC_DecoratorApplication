@@ -45,3 +45,17 @@ C:\Users\AlexN\Documents\Visual Studio 2015\Projects\DecoratorApplication\Decora
 C:\Users\AlexN\Documents\Visual Studio 2015\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.Walls.resources
 C:\Users\AlexN\Documents\Visual Studio 2015\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\Decorator Application.exe
 C:\Users\AlexN\Documents\Visual Studio 2015\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\Decorator Application.pdb
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\bin\Debug\Decorator Application.exe.config
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\Decorator Application.exe
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\Decorator Application.pdb
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\bin\Debug\Decorator Application.exe
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\bin\Debug\Decorator Application.pdb
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.csprojResolveAssemblyReference.cache
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.AboutBox.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.Invoice.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.MainForm.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.Openings.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.Paints.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.Properties.Resources.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.Walls.resources
+H:\Visual Studio 2010\Projects\DecoratorApplication\DecoratorApplication\obj\x86\Debug\DecoratorApplication.csproj.GenerateResource.Cache
