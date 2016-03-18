@@ -77,18 +77,6 @@ namespace DecoratorApplication
             }
         }
 
-        private void UpdateFinishButton()
-        {
-            if(!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(companyName) && !string.IsNullOrWhiteSpace(addressline1) && !string.IsNullOrWhiteSpace(addressline2) && !string.IsNullOrWhiteSpace(phoneNumber) && !string.IsNullOrWhiteSpace(customerId))
-            {
-                this.finishBtn.Enabled = true;
-            }
-            else
-            {
-                this.finishBtn.Enabled = false;
-            }
-        }
-
         private void Invoice_Load(object sender, EventArgs e)
         {
             dateBox.Text = date;
@@ -184,39 +172,33 @@ namespace DecoratorApplication
 
         #region Data Validation
 
-        private void nameBox_TextChanged(object sender, EventArgs e)
+        private void UpdateFields()
         {
             name = nameBox.Text;
-            UpdateFinishButton();
-        }
-
-        private void companyNameBox_TextChanged(object sender, EventArgs e)
-        {
             companyName = companyNameBox.Text;
-            UpdateFinishButton();
-        }
-
-        private void addressline1Box_TextChanged(object sender, EventArgs e)
-        {
             addressline1 = addressline1Box.Text;
-            UpdateFinishButton();
-        }
-
-        private void addressline2Box_TextChanged(object sender, EventArgs e)
-        {
             addressline2 = addressline2Box.Text;
-            UpdateFinishButton();
-        }
-
-        private void phoneNumberBox_TextChanged(object sender, EventArgs e)
-        {
             phoneNumber = phoneNumberBox.Text;
-            UpdateFinishButton();
+            customerId = customerIdBox.Text;
+            specialInstructions = specialInstructionsBox.Text;
         }
 
-        private void customerIdBox_TextChanged(object sender, EventArgs e)
+        private void UpdateFinishButton()
         {
-            customerId = customerIdBox.Text;
+            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(companyName) && !string.IsNullOrWhiteSpace(addressline1) && !string.IsNullOrWhiteSpace(addressline2) && !string.IsNullOrWhiteSpace(phoneNumber) && !string.IsNullOrWhiteSpace(customerId))
+            {
+                this.finishBtn.Enabled = true;
+            }
+            else
+            {
+                this.finishBtn.Enabled = false;
+            }
+        }
+
+        //Instead of having 7 events...
+        private void FieldBoxes_TextChanged(object sender, EventArgs e)
+        {
+            UpdateFields();
             UpdateFinishButton();
         }
 
@@ -241,9 +223,9 @@ namespace DecoratorApplication
                 MessageBox.Show("Something went wrong! Please check the VAT Rate.", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             vatRate = vatRateBox.Text.Remove(vatRateBox.Text.IndexOf(")")).Remove(0, vatRateBox.Text.IndexOf("%") + 1);
-            vat = (decimal.Parse(subTotal) * vatRateValue).ToString(); //Don't need to try this parse since it's already been parsed from a float.
-            vatBox.Text = "£" + (decimal.Parse(subTotal) * vatRateValue).ToString();
-            total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString();
+            vat = (decimal.Parse(subTotal) * vatRateValue).ToString("0.00"); //Don't need to try this parse since it's already been parsed from a float.
+            vatBox.Text = "£" + (decimal.Parse(subTotal) * vatRateValue).ToString("0.00");
+            total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString("0.00");
             totalBox.Text = "£" + total;
         }
 
@@ -259,11 +241,6 @@ namespace DecoratorApplication
             discount = discountBox.Value.ToString();
             total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString();
             totalBox.Text = "£" + total;
-        }
-
-        private void specialInstructionsBox_TextChanged(object sender, EventArgs e)
-        {
-            specialInstructions = specialInstructionsBox.Text;
         }
 
         private void saveInvoice_FileOk(object sender, CancelEventArgs e)

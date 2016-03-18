@@ -52,7 +52,7 @@ namespace DecoratorApplication
         private void UpdateLabels()
         {
             rateLbl.Text = "£" + (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice).ToString();
-            totalLbl.Text = "£" + ( decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice) ).ToString();
+            totalLbl.Text = "£" + ( decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice) ).ToString("0.00");
             if (MainForm.Calculator.paintPrice > 0)
             {
                 createInvoiceBtn.Enabled = true;

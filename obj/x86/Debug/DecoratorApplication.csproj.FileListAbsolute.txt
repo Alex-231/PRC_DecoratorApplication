@@ -1,2 +1,0 @@
-C:\USBDrives\Kingston DataTraveler 2.0\BTEC\temp\obj\x86\Debug\DecoratorApplication.exe
-C:\USBDrives\Kingston DataTraveler 2.0\BTEC\temp\obj\x86\Debug\DecoratorApplication.pdb

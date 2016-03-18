@@ -46,7 +46,7 @@ namespace DecoratorApplication
                 MessageBox.Show("The area entered is not formatted correctly and has not been added", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (float.Parse(widthBox.Text) * float.Parse(heightBox.Text) >= MainForm.Calculator.WallAreas.Sum() - MainForm.Calculator.OpenAreas.Sum())
+            if (float.Parse(widthBox.Text) * float.Parse(heightBox.Text) >= MainForm.Calculator.GetTotalArea())
             {
                 MessageBox.Show("The opening you entered is larger than or equal to the wall area.", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -76,6 +76,12 @@ namespace DecoratorApplication
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void removeOpeningBtn_Click(object sender, EventArgs e)
+        {
+            MainForm.Calculator.RemoveOpening();
+            UpdateLabels();
         }
     }
 }

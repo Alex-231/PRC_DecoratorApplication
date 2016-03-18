@@ -142,7 +142,7 @@
             this.customerIdBox.Name = "customerIdBox";
             this.customerIdBox.Size = new System.Drawing.Size(164, 20);
             this.customerIdBox.TabIndex = 5;
-            this.customerIdBox.TextChanged += new System.EventHandler(this.customerIdBox_TextChanged);
+            this.customerIdBox.TextChanged += new System.EventHandler(this.FieldBoxes_TextChanged);
             // 
             // phoneNumberBox
             // 
@@ -150,7 +150,7 @@
             this.phoneNumberBox.Name = "phoneNumberBox";
             this.phoneNumberBox.Size = new System.Drawing.Size(164, 20);
             this.phoneNumberBox.TabIndex = 4;
-            this.phoneNumberBox.TextChanged += new System.EventHandler(this.phoneNumberBox_TextChanged);
+            this.phoneNumberBox.TextChanged += new System.EventHandler(this.FieldBoxes_TextChanged);
             // 
             // addressline2Box
             // 
@@ -158,7 +158,7 @@
             this.addressline2Box.Name = "addressline2Box";
             this.addressline2Box.Size = new System.Drawing.Size(164, 20);
             this.addressline2Box.TabIndex = 3;
-            this.addressline2Box.TextChanged += new System.EventHandler(this.addressline2Box_TextChanged);
+            this.addressline2Box.TextChanged += new System.EventHandler(this.FieldBoxes_TextChanged);
             // 
             // addressline1Box
             // 
@@ -166,7 +166,7 @@
             this.addressline1Box.Name = "addressline1Box";
             this.addressline1Box.Size = new System.Drawing.Size(164, 20);
             this.addressline1Box.TabIndex = 2;
-            this.addressline1Box.TextChanged += new System.EventHandler(this.addressline1Box_TextChanged);
+            this.addressline1Box.TextChanged += new System.EventHandler(this.FieldBoxes_TextChanged);
             // 
             // companyNameBox
             // 
@@ -174,7 +174,7 @@
             this.companyNameBox.Name = "companyNameBox";
             this.companyNameBox.Size = new System.Drawing.Size(164, 20);
             this.companyNameBox.TabIndex = 1;
-            this.companyNameBox.TextChanged += new System.EventHandler(this.companyNameBox_TextChanged);
+            this.companyNameBox.TextChanged += new System.EventHandler(this.FieldBoxes_TextChanged);
             // 
             // nameBox
             // 
@@ -182,7 +182,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(164, 20);
             this.nameBox.TabIndex = 0;
-            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
+            this.nameBox.TextChanged += new System.EventHandler(this.FieldBoxes_TextChanged);
             // 
             // label5
             // 
@@ -461,7 +461,6 @@
             this.specialInstructionsBox.Name = "specialInstructionsBox";
             this.specialInstructionsBox.Size = new System.Drawing.Size(249, 102);
             this.specialInstructionsBox.TabIndex = 6;
-            this.specialInstructionsBox.TextChanged += new System.EventHandler(this.specialInstructionsBox_TextChanged);
             // 
             // backBtn
             // 

@@ -5,45 +5,48 @@ using System.Text;
 
 namespace DecoratorApplication
 {
+    public class Areas
+    {
+        //Why use floats when we can use areas!
+        //(Or instances of the area class...)
+        //(Which uses floats...)
+
+        public float Width { get; set; }
+        public float Height { get; set; }
+        public float Area { get; private set; }
+
+        public Areas(float width, float height)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Area = width * height;
+        }
+    }
+
     public class PaintMath
     {
         public PaintMath()
         {
-            WallAreas = new List<float>();
-            OpenAreas = new List<float>();
+            OpenAreas = new List<Areas>();
+            WallAreas = new List<Areas>();
         }
 
-        //Public Access
-        public List<float> WallAreas;
-        public List<float> OpenAreas;
-
-        //Private Set
-        /*
-        //Creating identical private data for a public property is not a good thing to do.
-        //However due to a bug with VS 2010's compiler, not doing this would result in an overflow.
-        private List<float> wallareas;
-        public List<float> WallAreas { get { return wallareas; } private set { wallareas = value; } }
-        private List<float> openareas;
-        public List<float> OpenAreas { get { return openareas; } private set { openareas = value; } }
-        */
-
-        //public List<float> WallAreas { get { return WallAreas; } set { WallAreas = value; } }
+        public List<Areas> OpenAreas { get; set; }
+        public List<Areas> WallAreas { get; set; }
 
         public decimal paintPrice = 0;
         public decimal undercoatPrice = 0;
 
         public string paintType;
 
-        //These functions aren't really needed yet but hopefully they'll be more useful with a private set on the arrays.
-
         public void AddWall(float width, float height)
         {
-            this.WallAreas.Add(width * height);
+            this.WallAreas.Add(new Areas(width, height));
         }
 
         public void AddOpening(float width, float height)
         {
-            this.OpenAreas.Add(width * height);
+            this.OpenAreas.Add(new Areas(width,height));
         }
 
         public void RemoveWall()
@@ -59,14 +62,28 @@ namespace DecoratorApplication
         {
             try
             {
-                this.OpenAreas.Remove(this.WallAreas.Last());
+                this.OpenAreas.Remove(this.OpenAreas.Last());
             }
             catch { }
         }
 
         public float GetTotalArea()
         {
-            return (WallAreas.Sum() - OpenAreas.Sum());
+            //Go through all of the class instances in the list, recording the areas and adding them up.
+
+            float totalWallArea = 0;
+            foreach(Areas Wall in WallAreas)
+            {
+                totalWallArea = totalWallArea + Wall.Area;
+            }
+
+            float totalOpenArea = 0;
+            foreach (Areas Opening in OpenAreas)
+            {
+                totalOpenArea = totalOpenArea + Opening.Area;
+            }
+
+            return totalWallArea - totalOpenArea;
         }
     }
 }

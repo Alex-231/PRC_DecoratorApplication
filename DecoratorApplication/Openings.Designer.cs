@@ -113,6 +113,7 @@
             this.removeOpeningBtn.TabIndex = 3;
             this.removeOpeningBtn.Text = "Remove Last Opening";
             this.removeOpeningBtn.UseVisualStyleBackColor = true;
+            this.removeOpeningBtn.Click += new System.EventHandler(this.removeOpeningBtn_Click);
             // 
             // groupBox1
             // 
@@ -213,7 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.nextBtn);
             this.Controls.Add(this.groupBox2);
