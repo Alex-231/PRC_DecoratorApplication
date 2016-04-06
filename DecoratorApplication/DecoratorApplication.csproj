@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="marathon_icon_2_256px.ico" />
+    <Content Include="Notes.txt" />
     <None Include="Resources\marathon_icon_2_256px.ico" />
   </ItemGroup>
   <ItemGroup>

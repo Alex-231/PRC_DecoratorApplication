@@ -17,6 +17,17 @@ namespace DecoratorApplication
 {
     public partial class Invoice : Form
     {
+        static decimal paintPrice;
+        static decimal undercoatPrice;
+        static string paintType;
+
+        public Invoice(decimal paintprice, decimal undercoatprice, string painttype)
+        {
+            paintPrice = paintprice;
+            undercoatPrice = undercoatprice;
+            paintType = painttype;
+        }
+
         #region DemStrings
 
         //The purchaseOrder is 001 for paint, 002 for paint with undercoat and 000 for error.
@@ -34,12 +45,11 @@ namespace DecoratorApplication
         string invoiceNumber = DateTime.Now.Year + "-" + (DateTime.Now.Month / 4) + "-" + DecoratorApplication.Properties.Settings.Default.invoiceNumber.ToString("D3");
         string purchaseOrder = "000";
         string paymentDue = DateTime.Now.Date.AddMonths(1).ToString("dd/MM/yy");
-        string subTotal = (decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice)).ToString();
+        string subTotal = (decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (paintPrice + undercoatPrice)).ToString();
 
         string totalArea = MainForm.Calculator.GetTotalArea().ToString();
-        string paintType = MainForm.Calculator.paintType;
-        string paintPrice = MainForm.Calculator.paintPrice.ToString();
-        string undercoatPrice;
+        //string paintPrice = paintPrice.ToString(); (Before I used the construct up top)
+        //string undercoatPrice;
         string undercoatType;  //Some support for multiple undercoats here although it would take some more work.
         string discount = "0";
         decimal vatRateValue = 0.2m; //Used in calculation.
@@ -63,16 +73,14 @@ namespace DecoratorApplication
         {
             InitializeComponent();
 
-            if (MainForm.Calculator.undercoatPrice == 0)
+            if (undercoatPrice == 0)
             {
                 purchaseOrder = "001";
-                undercoatPrice = "";
                 undercoatType = "";
             }
             else
             {
                 purchaseOrder = "002";
-                undercoatPrice = MainForm.Calculator.undercoatPrice.ToString();
                 undercoatType = "   + Undercoat";
             }
         }
@@ -115,8 +123,8 @@ namespace DecoratorApplication
             invoiceFileEditing.Replace("<paintType>", (paintType + " Paint")); //Might want to look into using an array in the future to handle multiple items.
             invoiceFileEditing.Replace("<totalArea>", totalArea);
             invoiceFileEditing.Replace("<undercoatType>", undercoatType);
-            invoiceFileEditing.Replace("<paintPrice>", paintPrice);
-            invoiceFileEditing.Replace("<undercoatPrice>", undercoatPrice);
+            invoiceFileEditing.Replace("<paintPrice>", paintPrice.ToString());
+            invoiceFileEditing.Replace("<undercoatPrice>", undercoatPrice.ToString());
             invoiceFileEditing.Replace("<specialInstructions>", specialInstructions);
             invoiceFileEditing.Replace("<subTotal>", subTotal);
             invoiceFileEditing.Replace("<vatRate>", vatRate);
@@ -239,7 +247,7 @@ namespace DecoratorApplication
             }
 
             discount = discountBox.Value.ToString();
-            total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString();
+            total = ((decimal.Parse(subTotal) + decimal.Parse(vat)) - decimal.Parse(discount)).ToString(); //Calculate Total Method.
             totalBox.Text = "£" + total;
         }
 

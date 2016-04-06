@@ -1,0 +1,48 @@
+﻿//What I learnt at boat school is...
+DecoratorApplication Review, 21/3/16 (Late but I don't wanna stop working on this thing.)
+
+Datasources!
+If I can create a datasource with the areas lists, 
+I could improve the form with the ability to add or remove walls in specific places.
+
+Instances!
+I shouldn't really be instancing PaintMath, it needs to be constantly accessable.
+(Kept the interface just for an example of instancing.)
+
+Interfaces!
+If I really wanted to, I could probably make paintmath more of an interface.
+
+Constructors!
+I don't need global variables when I have constructors!
+(Implemented.)
+
+Unit Testing!
+I don't need a list instance when I can mock!
+//Arrange //Act //Assert
+
+S.O.L.I.D!
+
+S is for...
+I've been trying to follow the Single-Responsability Principle for a while now,
+as I was introduced to in a while ago.
+I would like to do a full review on this application but I'm too ill :(
+
+O is for...
+Open/Closed Principle
+Again this is something I try to follow, and to some extant I have in this application.
+I had no problem switcing to custom class lists properties from float lists.
+
+Give me an L!...
+Liskov, what a fungi. This one seems true to me, I mean I could unit test this bad boy without trouble.
+
+I 
+Does this apply? I mean my understanding of client in this case is operating systems,
+and this thing is windows only. This seems more relevant to web apps.
+
+The D... (Can you tell I'm getting tired?)
+I'm not really sure where abstractions would fit in here.
+Perhaps with the PaintMath class if I really wanted...
+
+Todo:
+Solve the close button.
+(Should kill all forms, but I couldn't handle the sender.)

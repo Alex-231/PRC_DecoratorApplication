@@ -16,6 +16,10 @@ namespace DecoratorApplication
             InitializeComponent();
         }
 
+        decimal paintPrice;
+        decimal undercoatPrice;
+        string paintType;
+
         private void paintBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if the selection changes, and contains a £, parse the price.
@@ -24,11 +28,11 @@ namespace DecoratorApplication
                 string paintPriceParse = paintBox.Text;
                 paintPriceParse = paintPriceParse.Remove(0, paintPriceParse.IndexOf("£") + 1); //Removed everything before the price.
                 paintPriceParse = paintPriceParse.Remove(paintPriceParse.IndexOf(" ")); //Removes everything after the price.
-                MainForm.Calculator.paintType = paintBox.Text.Remove(paintBox.Text.IndexOf("(") - 1); //Removes everything after the paint type.
+                paintType = paintBox.Text.Remove(paintBox.Text.IndexOf("(") - 1); //Removes everything after the paint type.
 
                 try
                 {
-                    MainForm.Calculator.paintPrice = decimal.Parse(paintPriceParse);
+                    paintPrice = decimal.Parse(paintPriceParse);
                 }
                 catch (FormatException)
                 {
@@ -42,7 +46,7 @@ namespace DecoratorApplication
                 {
                     MessageBox.Show("Something went wrong! Please check the price of the paint.", "Paint Calculator - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (MainForm.Calculator.paintPrice > 0)
+                if (paintPrice > 0)
                 {
                     UpdateLabels();
                 }
@@ -51,9 +55,9 @@ namespace DecoratorApplication
 
         private void UpdateLabels()
         {
-            rateLbl.Text = "£" + (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice).ToString();
-            totalLbl.Text = "£" + ( decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (MainForm.Calculator.paintPrice + MainForm.Calculator.undercoatPrice) ).ToString("0.00");
-            if (MainForm.Calculator.paintPrice > 0)
+            rateLbl.Text = "£" + (paintPrice + undercoatPrice).ToString();
+            totalLbl.Text = "£" + ( decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (paintPrice + undercoatPrice) ).ToString("0.00");
+            if (paintPrice > 0)
             {
                 createInvoiceBtn.Enabled = true;
             }
@@ -73,7 +77,7 @@ namespace DecoratorApplication
 
                 try
                 {
-                    MainForm.Calculator.undercoatPrice = decimal.Parse(undercoatPriceParse);
+                    undercoatPrice = decimal.Parse(undercoatPriceParse);
                 }
                 catch (FormatException)
                 {
@@ -91,7 +95,7 @@ namespace DecoratorApplication
             }
             else
             {
-                MainForm.Calculator.undercoatPrice = 0;
+                undercoatPrice = 0;
                 UpdateLabels();
             }
         }
@@ -103,7 +107,7 @@ namespace DecoratorApplication
 
         private void createInvoiceBtn_Click(object sender, EventArgs e)
         {
-            Invoice InvoiceForm = new Invoice();
+            Invoice InvoiceForm = new Invoice(paintPrice, undercoatPrice, paintType);
             this.Hide();
             InvoiceForm.ShowDialog();
             this.Show();

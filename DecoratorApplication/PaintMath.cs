@@ -13,7 +13,7 @@ namespace DecoratorApplication
 
         public float Width { get; set; }
         public float Height { get; set; }
-        public float Area { get; private set; }
+        public float Area { get; set; }
 
         public Areas(float width, float height)
         {
@@ -33,11 +33,6 @@ namespace DecoratorApplication
 
         public List<Areas> OpenAreas { get; set; }
         public List<Areas> WallAreas { get; set; }
-
-        public decimal paintPrice = 0;
-        public decimal undercoatPrice = 0;
-
-        public string paintType;
 
         public void AddWall(float width, float height)
         {
