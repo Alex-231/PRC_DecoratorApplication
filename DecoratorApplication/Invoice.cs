@@ -17,15 +17,29 @@ namespace DecoratorApplication
 {
     public partial class Invoice : Form
     {
-        static decimal paintPrice;
-        static decimal undercoatPrice;
-        static string paintType;
+        decimal paintPrice;
+        decimal undercoatPrice;
+        string paintType;
 
         public Invoice(decimal paintprice, decimal undercoatprice, string painttype)
         {
-            paintPrice = paintprice;
-            undercoatPrice = undercoatprice;
-            paintType = painttype;
+            this.paintPrice = paintprice;
+            this.undercoatPrice = undercoatprice;
+            this.paintType = painttype;
+            subTotal = (decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (paintPrice + undercoatPrice)).ToString();
+
+            if (undercoatPrice == 0)
+            {
+                purchaseOrder = "001";
+                undercoatType = "";
+            }
+            else
+            {
+                purchaseOrder = "002";
+                undercoatType = "   + Undercoat";
+            }
+
+            InitializeComponent();
         }
 
         #region DemStrings
@@ -45,7 +59,7 @@ namespace DecoratorApplication
         string invoiceNumber = DateTime.Now.Year + "-" + (DateTime.Now.Month / 4) + "-" + DecoratorApplication.Properties.Settings.Default.invoiceNumber.ToString("D3");
         string purchaseOrder = "000";
         string paymentDue = DateTime.Now.Date.AddMonths(1).ToString("dd/MM/yy");
-        string subTotal = (decimal.Parse(MainForm.Calculator.GetTotalArea().ToString()) * (paintPrice + undercoatPrice)).ToString();
+        string subTotal;
 
         string totalArea = MainForm.Calculator.GetTotalArea().ToString();
         //string paintPrice = paintPrice.ToString(); (Before I used the construct up top)
@@ -68,22 +82,6 @@ namespace DecoratorApplication
         bool writeError = false; //Definately a better way to do this.
 
         #endregion
-
-        public Invoice()
-        {
-            InitializeComponent();
-
-            if (undercoatPrice == 0)
-            {
-                purchaseOrder = "001";
-                undercoatType = "";
-            }
-            else
-            {
-                purchaseOrder = "002";
-                undercoatType = "   + Undercoat";
-            }
-        }
 
         private void Invoice_Load(object sender, EventArgs e)
         {
@@ -123,8 +121,8 @@ namespace DecoratorApplication
             invoiceFileEditing.Replace("<paintType>", (paintType + " Paint")); //Might want to look into using an array in the future to handle multiple items.
             invoiceFileEditing.Replace("<totalArea>", totalArea);
             invoiceFileEditing.Replace("<undercoatType>", undercoatType);
-            invoiceFileEditing.Replace("<paintPrice>", paintPrice.ToString());
-            invoiceFileEditing.Replace("<undercoatPrice>", undercoatPrice.ToString());
+            invoiceFileEditing.Replace("<paintPrice>", (paintPrice * (decimal)MainForm.Calculator.GetTotalArea()).ToString());
+            invoiceFileEditing.Replace("<undercoatPrice>", (undercoatPrice * (decimal)MainForm.Calculator.GetTotalArea()).ToString());
             invoiceFileEditing.Replace("<specialInstructions>", specialInstructions);
             invoiceFileEditing.Replace("<subTotal>", subTotal);
             invoiceFileEditing.Replace("<vatRate>", vatRate);
@@ -193,7 +191,7 @@ namespace DecoratorApplication
 
         private void UpdateFinishButton()
         {
-            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(companyName) && !string.IsNullOrWhiteSpace(addressline1) && !string.IsNullOrWhiteSpace(addressline2) && !string.IsNullOrWhiteSpace(phoneNumber) && !string.IsNullOrWhiteSpace(customerId))
+            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(addressline1) && !string.IsNullOrWhiteSpace(phoneNumber) && !string.IsNullOrWhiteSpace(customerId))
             {
                 this.finishBtn.Enabled = true;
             }
